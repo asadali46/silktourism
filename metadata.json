@@ -1,0 +1,6 @@
+{
+  "name": "Silk Tourism",
+  "description": "Modern luxury travel and tour booking platform featuring popular destinations, tour packages, customer dashboard, admin portal, and seamless booking experience.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
