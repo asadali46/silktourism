@@ -14,7 +14,8 @@ import {
   Sparkles,
   LayoutDashboard,
   ShieldCheck,
-  LogOut
+  LogOut,
+  LogIn
 } from 'lucide-react';
 
 interface HeaderProps {
@@ -26,7 +27,8 @@ interface HeaderProps {
   onOpenSearch: () => void;
   onOpenBooking: () => void;
   userRole: 'customer' | 'admin' | null;
-  onSelectRole: (role: 'customer' | 'admin' | null) => void;
+  onOpenAuthModal: () => void;
+  onLogout: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -38,7 +40,8 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenSearch,
   onOpenBooking,
   userRole,
-  onSelectRole,
+  onOpenAuthModal,
+  onLogout,
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -130,32 +133,6 @@ export const Header: React.FC<HeaderProps> = ({
                 </div>
               )}
             </div>
-
-            <span className="text-teal-500">|</span>
-
-            {/* Role Switcher */}
-            <div className="flex items-center gap-2">
-              <button
-                onClick={() => onNavigate('customer-dashboard')}
-                className={`text-xs px-2 py-0.5 rounded transition-colors ${
-                  currentView === 'customer-dashboard' 
-                    ? 'bg-amber-500 text-white font-bold' 
-                    : 'text-teal-100 hover:text-white'
-                }`}
-              >
-                Client
-              </button>
-              <button
-                onClick={() => onNavigate('admin-dashboard')}
-                className={`text-xs px-2 py-0.5 rounded transition-colors ${
-                  currentView === 'admin-dashboard' 
-                    ? 'bg-slate-900 text-amber-300 font-bold' 
-                    : 'text-teal-100 hover:text-white'
-                }`}
-              >
-                Admin
-              </button>
-            </div>
           </div>
         </div>
       </div>
@@ -236,66 +213,108 @@ export const Header: React.FC<HeaderProps> = ({
               )}
             </button>
 
-            {/* User Profile Dropdown */}
-            <div className="relative">
-              <button
-                onClick={() => setProfileDropdownOpen(!profileDropdownOpen)}
-                className="flex items-center gap-2 p-1.5 pl-2 pr-3 bg-slate-100 hover:bg-slate-200/80 rounded-full text-slate-700 text-xs font-semibold transition-colors"
-                id="header-profile-dropdown-btn"
-              >
-                <div className="w-7 h-7 rounded-full bg-[#0F766E] text-white flex items-center justify-center text-xs font-bold">
-                  <User className="w-4 h-4" />
-                </div>
-                <span>Account</span>
-                <ChevronDown className="w-3.5 h-3.5 text-slate-500" />
-              </button>
-
-              {profileDropdownOpen && (
-                <div className="absolute right-0 mt-2 w-56 bg-white border border-slate-200 rounded-2xl shadow-xl py-2 z-50">
-                  <div className="px-4 py-2 border-b border-slate-100">
-                    <p className="text-xs font-semibold text-slate-900">Asad Khan</p>
-                    <p className="text-[11px] text-slate-500">asad@example.com</p>
-                    <span className="inline-block mt-1 px-2 py-0.5 bg-teal-50 text-[#0F766E] text-[10px] font-bold rounded-full border border-teal-200">
-                      VIP Elite Traveler
-                    </span>
+            {/* User Account / Auth Section */}
+            {!userRole ? null : userRole === 'customer' ? (
+              <div className="relative">
+                <button
+                  onClick={() => setProfileDropdownOpen(!profileDropdownOpen)}
+                  className="flex items-center gap-2 p-1.5 pl-2 pr-3 bg-teal-50 hover:bg-teal-100 border border-teal-200 rounded-full text-[#0F766E] text-xs font-semibold transition-colors"
+                  id="header-profile-dropdown-btn"
+                >
+                  <div className="w-7 h-7 rounded-full bg-[#0F766E] text-white flex items-center justify-center text-xs font-bold">
+                    <User className="w-4 h-4" />
                   </div>
+                  <span>Client Portal</span>
+                  <ChevronDown className="w-3.5 h-3.5 text-[#0F766E]" />
+                </button>
 
-                  <button
-                    onClick={() => {
-                      onNavigate('customer-dashboard');
-                      setProfileDropdownOpen(false);
-                    }}
-                    className="w-full text-left px-4 py-2 text-xs text-slate-700 hover:bg-slate-50 flex items-center gap-2.5"
-                  >
-                    <LayoutDashboard className="w-4 h-4 text-[#0F766E]" />
-                    <span>Customer Dashboard</span>
-                  </button>
+                {profileDropdownOpen && (
+                  <div className="absolute right-0 mt-2 w-56 bg-white border border-slate-200 rounded-2xl shadow-xl py-2 z-50">
+                    <div className="px-4 py-2 border-b border-slate-100">
+                      <p className="text-xs font-semibold text-slate-900">Asad Khan</p>
+                      <p className="text-[11px] text-slate-500">asad@example.com</p>
+                      <span className="inline-block mt-1 px-2 py-0.5 bg-teal-50 text-[#0F766E] text-[10px] font-bold rounded-full border border-teal-200">
+                        Client Account
+                      </span>
+                    </div>
 
-                  <button
-                    onClick={() => {
-                      onNavigate('admin-dashboard');
-                      setProfileDropdownOpen(false);
-                    }}
-                    className="w-full text-left px-4 py-2 text-xs text-slate-700 hover:bg-slate-50 flex items-center gap-2.5"
-                  >
-                    <ShieldCheck className="w-4 h-4 text-amber-600" />
-                    <span>Admin Dashboard</span>
-                  </button>
-
-                  <div className="border-t border-slate-100 mt-1 pt-1">
                     <button
                       onClick={() => {
+                        onNavigate('customer-dashboard');
                         setProfileDropdownOpen(false);
                       }}
-                      className="w-full text-left px-4 py-2 text-xs text-rose-600 hover:bg-rose-50 flex items-center gap-2.5"
+                      className="w-full text-left px-4 py-2 text-xs text-slate-700 hover:bg-slate-50 flex items-center gap-2.5 font-medium"
                     >
-                      <LogOut className="w-4 h-4" />
-                      <span>Sign Out</span>
+                      <LayoutDashboard className="w-4 h-4 text-[#0F766E]" />
+                      <span>Client Dashboard</span>
                     </button>
+
+                    <div className="border-t border-slate-100 mt-1 pt-1">
+                      <button
+                        onClick={() => {
+                          setProfileDropdownOpen(false);
+                          onLogout();
+                        }}
+                        className="w-full text-left px-4 py-2 text-xs text-rose-600 hover:bg-rose-50 flex items-center gap-2.5 font-medium"
+                      >
+                        <LogOut className="w-4 h-4" />
+                        <span>Sign Out</span>
+                      </button>
+                    </div>
                   </div>
-                </div>
-              )}
-            </div>
+                )}
+              </div>
+            ) : (
+              <div className="relative">
+                <button
+                  onClick={() => setProfileDropdownOpen(!profileDropdownOpen)}
+                  className="flex items-center gap-2 p-1.5 pl-2 pr-3 bg-slate-900 hover:bg-slate-800 border border-slate-800 rounded-full text-amber-300 text-xs font-semibold transition-colors"
+                  id="header-admin-dropdown-btn"
+                >
+                  <div className="w-7 h-7 rounded-full bg-amber-400 text-slate-950 flex items-center justify-center text-xs font-bold">
+                    <ShieldCheck className="w-4 h-4" />
+                  </div>
+                  <span>Admin Portal</span>
+                  <ChevronDown className="w-3.5 h-3.5 text-amber-300" />
+                </button>
+
+                {profileDropdownOpen && (
+                  <div className="absolute right-0 mt-2 w-56 bg-white border border-slate-200 rounded-2xl shadow-xl py-2 z-50">
+                    <div className="px-4 py-2 border-b border-slate-100">
+                      <p className="text-xs font-semibold text-slate-900">Administrator</p>
+                      <p className="text-[11px] text-slate-500">admin@silktourism.pk</p>
+                      <span className="inline-block mt-1 px-2 py-0.5 bg-amber-100 text-amber-900 text-[10px] font-bold rounded-full border border-amber-200">
+                        Admin Account
+                      </span>
+                    </div>
+
+                    <button
+                      onClick={() => {
+                        onNavigate('admin-dashboard');
+                        setProfileDropdownOpen(false);
+                      }}
+                      className="w-full text-left px-4 py-2 text-xs text-slate-700 hover:bg-slate-50 flex items-center gap-2.5 font-medium"
+                    >
+                      <ShieldCheck className="w-4 h-4 text-amber-600" />
+                      <span>Admin Dashboard</span>
+                    </button>
+
+                    <div className="border-t border-slate-100 mt-1 pt-1">
+                      <button
+                        onClick={() => {
+                          setProfileDropdownOpen(false);
+                          onLogout();
+                        }}
+                        className="w-full text-left px-4 py-2 text-xs text-rose-600 hover:bg-rose-50 flex items-center gap-2.5 font-medium"
+                      >
+                        <LogOut className="w-4 h-4" />
+                        <span>Sign Out</span>
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
 
             {/* Book Now Primary Button */}
             <button
@@ -348,26 +367,53 @@ export const Header: React.FC<HeaderProps> = ({
             </div>
 
             <div className="pt-3 border-t border-slate-100 flex flex-col gap-2.5">
-              <div className="grid grid-cols-2 gap-2">
-                <button
-                  onClick={() => {
-                    onNavigate('customer-dashboard');
-                    setMobileMenuOpen(false);
-                  }}
-                  className="w-full py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-xl text-xs font-bold text-center"
-                >
-                  Client Portal
-                </button>
-                <button
-                  onClick={() => {
-                    onNavigate('admin-dashboard');
-                    setMobileMenuOpen(false);
-                  }}
-                  className="w-full py-2.5 bg-amber-100 hover:bg-amber-200 text-amber-900 rounded-xl text-xs font-bold text-center"
-                >
-                  Admin Portal
-                </button>
-              </div>
+              {!userRole ? null : userRole === 'customer' ? (
+                <>
+                  <button
+                    onClick={() => {
+                      onNavigate('customer-dashboard');
+                      setMobileMenuOpen(false);
+                    }}
+                    className="w-full py-2.5 bg-teal-50 hover:bg-teal-100 text-[#0F766E] rounded-xl text-xs font-bold text-center flex items-center justify-center gap-2"
+                  >
+                    <LayoutDashboard className="w-4 h-4" />
+                    <span>Client Dashboard</span>
+                  </button>
+                  <button
+                    onClick={() => {
+                      setMobileMenuOpen(false);
+                      onLogout();
+                    }}
+                    className="w-full py-2 bg-rose-50 text-rose-600 rounded-xl text-xs font-bold text-center flex items-center justify-center gap-2"
+                  >
+                    <LogOut className="w-4 h-4" />
+                    <span>Sign Out</span>
+                  </button>
+                </>
+              ) : (
+                <>
+                  <button
+                    onClick={() => {
+                      onNavigate('admin-dashboard');
+                      setMobileMenuOpen(false);
+                    }}
+                    className="w-full py-2.5 bg-amber-100 hover:bg-amber-200 text-amber-900 rounded-xl text-xs font-bold text-center flex items-center justify-center gap-2"
+                  >
+                    <ShieldCheck className="w-4 h-4" />
+                    <span>Admin Dashboard</span>
+                  </button>
+                  <button
+                    onClick={() => {
+                      setMobileMenuOpen(false);
+                      onLogout();
+                    }}
+                    className="w-full py-2 bg-rose-50 text-rose-600 rounded-xl text-xs font-bold text-center flex items-center justify-center gap-2"
+                  >
+                    <LogOut className="w-4 h-4" />
+                    <span>Sign Out</span>
+                  </button>
+                </>
+              )}
 
               <button
                 onClick={() => {

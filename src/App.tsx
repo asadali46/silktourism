@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { User, ShieldCheck, Lock } from 'lucide-react';
 import { PageView, TourPackage, Destination, GalleryItem, UserBooking, NotificationItem } from './types';
 import { 
   mockDestinations, 
@@ -17,6 +18,7 @@ import { Footer } from './components/layout/Footer';
 import { Toast, ToastMessage } from './components/common/Toast';
 import { BookingModal } from './components/common/BookingModal';
 import { SearchModal } from './components/common/SearchModal';
+import { AuthModal } from './components/common/AuthModal';
 import { Lightbox } from './components/common/Lightbox';
 
 // Sections (Homepage)
@@ -45,7 +47,7 @@ export default function App() {
 
   // Currency & Role State
   const [currency, setCurrency] = useState<string>('PKR');
-  const [userRole, setUserRole] = useState<'customer' | 'admin' | null>('customer');
+  const [userRole, setUserRole] = useState<'customer' | 'admin' | null>(null);
 
   // Data Collections State
   const [destinations] = useState<Destination[]>(mockDestinations);
@@ -61,6 +63,7 @@ export default function App() {
   // Modal Controls
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [lightboxItem, setLightboxItem] = useState<GalleryItem | null>(null);
 
   // Toast System
@@ -69,6 +72,35 @@ export default function App() {
   const addToast = (title: string, message?: string, type: 'success' | 'error' | 'info' = 'success') => {
     const id = `toast-${Date.now()}-${Math.random()}`;
     setToasts((prev) => [...prev, { id, title, message, type }]);
+  };
+
+  const handleLogin = (role: 'customer' | 'admin') => {
+    setUserRole(role);
+    setIsAuthModalOpen(false);
+    if (role === 'customer') {
+      addToast('Welcome back!', 'Logged in as Client.');
+      handleNavigate('customer-dashboard');
+    } else {
+      addToast('Welcome Administrator!', 'Logged in as Admin.');
+      handleNavigate('admin-dashboard');
+    }
+  };
+
+  const handleLogout = () => {
+    setUserRole(null);
+    addToast('Signed out successfully', undefined, 'info');
+    handleNavigate('home');
+  };
+
+  const handleBookNowAction = (tour?: TourPackage) => {
+    if (tour) {
+      setSelectedTour(tour);
+    }
+    setIsBookingOpen(false);
+    handleNavigate('destinations');
+    if (!userRole) {
+      setIsAuthModalOpen(true);
+    }
   };
 
   const dismissToast = (id: string) => {
@@ -157,12 +189,10 @@ export default function App() {
           addToast(`Currency updated to ${c}`);
         }}
         onOpenSearch={() => setIsSearchOpen(true)}
-        onOpenBooking={() => {
-          setSelectedTour(tours[0]);
-          setIsBookingOpen(true);
-        }}
+        onOpenBooking={() => handleBookNowAction()}
         userRole={userRole}
-        onSelectRole={setUserRole}
+        onOpenAuthModal={() => setIsAuthModalOpen(true)}
+        onLogout={handleLogout}
       />
 
       {/* View Router */}
@@ -190,20 +220,14 @@ export default function App() {
               onToggleWishlist={handleToggleWishlist}
               onSelectTour={(t) => setSelectedTour(t)}
               onNavigate={handleNavigate}
-              onOpenBooking={(t) => {
-                setSelectedTour(t);
-                setIsBookingOpen(true);
-              }}
+              onOpenBooking={(t) => handleBookNowAction(t)}
             />
 
             <WhyChooseUs />
 
             <SpecialOffers
               onNavigate={handleNavigate}
-              onOpenBooking={() => {
-                setSelectedTour(tours[0]);
-                setIsBookingOpen(true);
-              }}
+              onOpenBooking={() => handleBookNowAction()}
             />
 
             <ServicesSection
@@ -231,7 +255,7 @@ export default function App() {
             tours={tours}
             onSelectDestination={(d) => setSelectedDestination(d)}
             onNavigate={handleNavigate}
-            onOpenBooking={() => setIsBookingOpen(true)}
+            onOpenBooking={() => handleBookNowAction()}
           />
         )}
 
@@ -242,10 +266,7 @@ export default function App() {
             onToggleWishlist={handleToggleWishlist}
             onSelectTour={(t) => setSelectedTour(t)}
             onNavigate={handleNavigate}
-            onOpenBooking={(t) => {
-              setSelectedTour(t);
-              setIsBookingOpen(true);
-            }}
+            onOpenBooking={(t) => handleBookNowAction(t)}
           />
         )}
 
@@ -255,10 +276,7 @@ export default function App() {
             wishlist={wishlist}
             onToggleWishlist={handleToggleWishlist}
             onNavigate={handleNavigate}
-            onOpenBooking={(t) => {
-              setSelectedTour(t);
-              setIsBookingOpen(true);
-            }}
+            onOpenBooking={(t) => handleBookNowAction(t)}
           />
         )}
 
@@ -289,23 +307,79 @@ export default function App() {
         )}
 
         {currentView === 'customer-dashboard' && (
-          <CustomerDashboard
-            bookings={userBookings}
-            notifications={notifications}
-            wishlistTours={wishlistTours}
-            onRemoveWishlist={handleToggleWishlist}
-            onNavigate={handleNavigate}
-            onOpenBooking={() => setIsBookingOpen(true)}
-          />
+          userRole === 'customer' ? (
+            <CustomerDashboard
+              bookings={userBookings}
+              notifications={notifications}
+              wishlistTours={wishlistTours}
+              onRemoveWishlist={handleToggleWishlist}
+              onNavigate={handleNavigate}
+              onOpenBooking={() => setIsBookingOpen(true)}
+            />
+          ) : (
+            <div className="pt-32 pb-20 px-4 max-w-xl mx-auto text-center">
+              <div className="bg-white p-8 rounded-3xl border border-slate-200/80 shadow-xl space-y-6">
+                <div className="w-16 h-16 bg-teal-50 border border-teal-200 rounded-full flex items-center justify-center mx-auto text-[#0F766E]">
+                  <User className="w-8 h-8" />
+                </div>
+                <h2 className="font-serif-heading text-2xl font-bold text-slate-900">Client Portal Sign-In Required</h2>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  Please sign in with a Client account to view your active bookings, saved itineraries, and personalized travel concierge services. Guest users can explore destinations and tours directly.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-3 pt-2">
+                  <button
+                    onClick={() => setIsAuthModalOpen(true)}
+                    className="flex-1 py-3 bg-[#0F766E] hover:bg-teal-700 text-white rounded-xl font-bold text-xs uppercase tracking-wider shadow"
+                  >
+                    Sign In as Client
+                  </button>
+                  <button
+                    onClick={() => handleNavigate('home')}
+                    className="flex-1 py-3 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-xl font-bold text-xs uppercase tracking-wider"
+                  >
+                    Guest Mode (Explore Site)
+                  </button>
+                </div>
+              </div>
+            </div>
+          )
         )}
 
         {currentView === 'admin-dashboard' && (
-          <AdminDashboard
-            bookings={userBookings}
-            tours={tours}
-            onAddTour={handleAddTour}
-            onNavigate={handleNavigate}
-          />
+          userRole === 'admin' ? (
+            <AdminDashboard
+              bookings={userBookings}
+              tours={tours}
+              onAddTour={handleAddTour}
+              onNavigate={handleNavigate}
+            />
+          ) : (
+            <div className="pt-32 pb-20 px-4 max-w-xl mx-auto text-center">
+              <div className="bg-white p-8 rounded-3xl border border-slate-200/80 shadow-xl space-y-6">
+                <div className="w-16 h-16 bg-amber-50 border border-amber-200 rounded-full flex items-center justify-center mx-auto text-amber-600">
+                  <ShieldCheck className="w-8 h-8" />
+                </div>
+                <h2 className="font-serif-heading text-2xl font-bold text-slate-900">Admin Portal Authorization Required</h2>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  Administrator credentials are required to manage tour packages, client bookings, and travel analytics. Sign in with admin privileges or continue exploring in guest mode.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-3 pt-2">
+                  <button
+                    onClick={() => setIsAuthModalOpen(true)}
+                    className="flex-1 py-3 bg-slate-900 hover:bg-slate-800 text-amber-300 rounded-xl font-bold text-xs uppercase tracking-wider shadow"
+                  >
+                    Sign In as Admin
+                  </button>
+                  <button
+                    onClick={() => handleNavigate('home')}
+                    className="flex-1 py-3 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-xl font-bold text-xs uppercase tracking-wider"
+                  >
+                    Guest Mode (Explore Site)
+                  </button>
+                </div>
+              </div>
+            </div>
+          )
         )}
 
         {(currentView === 'faq' || currentView === 'privacy' || currentView === 'terms') && (
@@ -340,6 +414,13 @@ export default function App() {
         tours={tours}
         currency={currency}
         onCompleteBooking={handleCompleteBooking}
+      />
+
+      {/* Global Auth Modal */}
+      <AuthModal
+        isOpen={isAuthModalOpen}
+        onClose={() => setIsAuthModalOpen(false)}
+        onLogin={handleLogin}
       />
 
       {/* Global Lightbox */}
