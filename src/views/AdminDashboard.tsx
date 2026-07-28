@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { UserBooking, TourPackage, PageView } from '../types';
 import { 
   ShieldCheck, 
@@ -13,8 +13,15 @@ import {
   X, 
   Layers,
   BarChart3,
-  CheckCircle2
+  CheckCircle2,
+  Database,
+  Radio,
+  RefreshCw,
+  Code,
+  Copy,
+  Check
 } from 'lucide-react';
+import { isSupabaseConfigured, checkSupabaseConnection } from '../lib/supabase';
 
 interface AdminDashboardProps {
   bookings: UserBooking[];
@@ -37,6 +44,67 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
   const [newLocation, setNewLocation] = useState('');
   const [newPrice, setNewPrice] = useState(3000);
   const [newDuration, setNewDuration] = useState('7 Days / 6 Nights');
+
+  const [isSqlModalOpen, setIsSqlModalOpen] = useState(false);
+  const [copiedSql, setCopiedSql] = useState(false);
+
+  const sqlQueries = `-- ====================================================================
+-- SILK TOURISM - SUPABASE DATABASE INITIALIZATION SCHEMA
+-- Paste these queries into the Supabase SQL Editor (https://app.supabase.com)
+-- ====================================================================
+
+-- 1. Create 'bookings' Table
+CREATE TABLE IF NOT EXISTS public.bookings (
+    id TEXT PRIMARY KEY,
+    tour_id TEXT NOT NULL,
+    tour_title TEXT NOT NULL,
+    tour_image TEXT,
+    travel_date DATE NOT NULL,
+    travelers INTEGER DEFAULT 1,
+    total_price NUMERIC(10, 2) NOT NULL,
+    status TEXT DEFAULT 'confirmed',
+    payment_status TEXT DEFAULT 'paid',
+    customer_name TEXT,
+    customer_email TEXT,
+    special_requests TEXT,
+    booking_date DATE DEFAULT CURRENT_DATE,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc'::text, NOW()) NOT NULL
+);
+
+-- 2. Create 'tours' Table
+CREATE TABLE IF NOT EXISTS public.tours (
+    id TEXT PRIMARY KEY,
+    title TEXT NOT NULL,
+    location TEXT NOT NULL,
+    country TEXT NOT NULL,
+    price NUMERIC(10, 2) NOT NULL,
+    duration TEXT,
+    category TEXT,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc'::text, NOW()) NOT NULL
+);
+
+-- 3. Enable Row Level Security (RLS) on tables
+ALTER TABLE public.bookings ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.tours ENABLE ROW LEVEL SECURITY;
+
+-- 4. Create Public Access Policies (Allows read & insert for anon users)
+CREATE POLICY "Allow public read access on bookings" 
+    ON public.bookings FOR SELECT USING (true);
+
+CREATE POLICY "Allow public insert access on bookings" 
+    ON public.bookings FOR INSERT WITH CHECK (true);
+
+CREATE POLICY "Allow public read access on tours" 
+    ON public.tours FOR SELECT USING (true);
+
+CREATE POLICY "Allow public insert access on tours" 
+    ON public.tours FOR INSERT WITH CHECK (true);`;
+
+  const handleCopySql = () => {
+    navigator.clipboard.writeText(sqlQueries);
+    setCopiedSql(true);
+    setTimeout(() => setCopiedSql(false), 2000);
+  };
 
   const handleCreateTour = (e: React.FormEvent) => {
     e.preventDefault();
@@ -66,12 +134,64 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
     setNewLocation('');
   };
 
+  const [dbStatus, setDbStatus] = useState<{ connected: boolean; message: string }>({
+    connected: false,
+    message: 'Checking database connection...',
+  });
+  const [checkingDb, setCheckingDb] = useState(false);
+
+  const runDbCheck = async () => {
+    setCheckingDb(true);
+    const res = await checkSupabaseConnection();
+    setDbStatus(res);
+    setCheckingDb(false);
+  };
+
+  useEffect(() => {
+    runDbCheck();
+  }, []);
+
   const totalRevenue = bookings.reduce((sum, b) => sum + b.totalPrice, 0) + 1420000;
 
   return (
     <div className="pt-24 pb-20 bg-[#0F172A] text-slate-100 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
+        {/* Supabase Status Banner */}
+        <div className="mb-6 p-4 rounded-2xl bg-slate-900 border border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">
+          <div className="flex items-center gap-3">
+            <div className={`p-2.5 rounded-xl border ${dbStatus.connected ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400' : 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400'}`}>
+              <Database className="w-5 h-5" />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="font-bold text-white text-sm">Supabase Integration</span>
+                <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${isSupabaseConfigured ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30' : 'bg-amber-500/20 text-amber-300 border border-amber-500/30'}`}>
+                  {isSupabaseConfigured ? 'Client Ready' : 'Configuration Ready'}
+                </span>
+              </div>
+              <p className="text-slate-400 mt-0.5">{dbStatus.message}</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-2 self-end sm:self-auto">
+            <button
+              onClick={() => setIsSqlModalOpen(true)}
+              className="px-3 py-1.5 bg-[#0F766E]/20 hover:bg-[#0F766E]/30 text-teal-300 border border-teal-500/30 rounded-lg font-semibold flex items-center gap-1.5 transition-colors"
+            >
+              <Code className="w-3.5 h-3.5" />
+              <span>SQL Setup Queries</span>
+            </button>
+            <button
+              onClick={runDbCheck}
+              disabled={checkingDb}
+              className="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg font-semibold flex items-center gap-1.5 transition-colors"
+            >
+              <RefreshCw className={`w-3.5 h-3.5 ${checkingDb ? 'animate-spin' : ''}`} />
+              <span>Test Connection</span>
+            </button>
+          </div>
+        </div>
+
         {/* Admin Header */}
         <div className="bg-slate-900 border border-slate-800 p-6 rounded-3xl mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="flex items-center gap-3">
@@ -287,6 +407,61 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                 Publish Expedition Package
               </button>
             </form>
+          </div>
+        </div>
+      )}
+
+      {/* Supabase SQL Setup Queries Modal */}
+      {isSqlModalOpen && (
+        <div className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
+          <div className="bg-slate-900 border border-slate-800 rounded-3xl max-w-2xl w-full p-6 shadow-2xl relative text-xs">
+            <button
+              onClick={() => setIsSqlModalOpen(false)}
+              className="absolute top-5 right-5 p-2 text-slate-400 hover:text-white rounded-xl bg-slate-800 hover:bg-slate-700 transition-colors"
+            >
+              <X className="w-4 h-4" />
+            </button>
+
+            <div className="flex items-center gap-3 mb-4">
+              <div className="p-2.5 bg-teal-500/10 border border-teal-500/30 text-teal-400 rounded-xl">
+                <Database className="w-5 h-5" />
+              </div>
+              <div>
+                <h3 className="text-base font-bold text-white">Supabase SQL Initialization Script</h3>
+                <p className="text-slate-400">Copy & paste these queries into your Supabase SQL Editor</p>
+              </div>
+            </div>
+
+            <div className="relative mb-4">
+              <pre className="p-4 bg-slate-950 border border-slate-800 rounded-2xl text-emerald-400 font-mono text-[11px] leading-relaxed overflow-x-auto max-h-80 select-all">
+                {sqlQueries}
+              </pre>
+              <button
+                onClick={handleCopySql}
+                className="absolute top-3 right-3 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 rounded-lg text-[11px] font-bold flex items-center gap-1.5 transition-colors shadow-lg"
+              >
+                {copiedSql ? (
+                  <>
+                    <Check className="w-3.5 h-3.5 text-emerald-400" />
+                    <span className="text-emerald-400">Copied!</span>
+                  </>
+                ) : (
+                  <>
+                    <Copy className="w-3.5 h-3.5" />
+                    <span>Copy SQL</span>
+                  </>
+                )}
+              </button>
+            </div>
+
+            <div className="bg-slate-800/50 border border-slate-800 p-3 rounded-xl text-slate-300 space-y-1">
+              <p className="font-bold text-teal-300">Quick Instructions:</p>
+              <ol className="list-decimal list-inside space-y-0.5 text-slate-400">
+                <li>Log in to your <a href="https://supabase.com" target="_blank" rel="noreferrer" className="text-teal-400 underline">Supabase Dashboard</a>.</li>
+                <li>Go to the <strong>SQL Editor</strong> tab on the left sidebar.</li>
+                <li>Click <strong>New Query</strong>, paste the copied SQL above, and click <strong>Run</strong>.</li>
+              </ol>
+            </div>
           </div>
         </div>
       )}

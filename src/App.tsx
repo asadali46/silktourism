@@ -1,6 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { User, ShieldCheck, Lock } from 'lucide-react';
 import { PageView, TourPackage, Destination, GalleryItem, UserBooking, NotificationItem } from './types';
+import { 
+  saveBookingToSupabase, 
+  fetchBookingsFromSupabase, 
+  saveTourToSupabase, 
+  isSupabaseConfigured 
+} from './lib/supabase';
 import { 
   mockDestinations, 
   mockTours, 
@@ -20,6 +26,7 @@ import { BookingModal } from './components/common/BookingModal';
 import { SearchModal } from './components/common/SearchModal';
 import { AuthModal } from './components/common/AuthModal';
 import { Lightbox } from './components/common/Lightbox';
+import { WhatsAppButton } from './components/common/WhatsAppButton';
 
 // Sections (Homepage)
 import { HeroSection } from './components/sections/HeroSection';
@@ -107,6 +114,23 @@ export default function App() {
     setToasts((prev) => prev.filter((t) => t.id !== id));
   };
 
+  // Load initial remote bookings if Supabase is connected
+  useEffect(() => {
+    if (isSupabaseConfigured) {
+      fetchBookingsFromSupabase().then((remoteBookings) => {
+        if (remoteBookings && remoteBookings.length > 0) {
+          setUserBookings((prev) => {
+            const combined = [...remoteBookings, ...prev];
+            // Deduplicate by ID
+            const uniqueMap = new Map();
+            combined.forEach((item) => uniqueMap.set(item.id, item));
+            return Array.from(uniqueMap.values());
+          });
+        }
+      });
+    }
+  }, []);
+
   // Handlers
   const handleToggleWishlist = (tourId: string) => {
     setWishlist((prev) => {
@@ -120,7 +144,7 @@ export default function App() {
     });
   };
 
-  const handleCompleteBooking = (details: any) => {
+  const handleCompleteBooking = async (details: any) => {
     const newBooking: UserBooking = {
       id: `BK-${Math.floor(1000 + Math.random() * 9000)}`,
       tourId: details.tourId,
@@ -139,6 +163,11 @@ export default function App() {
 
     setUserBookings((prev) => [newBooking, ...prev]);
 
+    // Save to Supabase
+    if (isSupabaseConfigured) {
+      await saveBookingToSupabase(newBooking);
+    }
+
     // Add Notification
     setNotifications((prev) => [
       {
@@ -155,8 +184,11 @@ export default function App() {
     addToast('VIP Reservation Confirmed!', `Booking ${newBooking.id} created successfully.`);
   };
 
-  const handleAddTour = (newTourPackage: TourPackage) => {
+  const handleAddTour = async (newTourPackage: TourPackage) => {
     setTours((prev) => [newTourPackage, ...prev]);
+    if (isSupabaseConfigured) {
+      await saveTourToSupabase(newTourPackage);
+    }
     addToast('New Tour Package Created!', `"${newTourPackage.title}" is now published.`);
   };
 
@@ -430,6 +462,9 @@ export default function App() {
         onClose={() => setLightboxItem(null)}
         onNavigate={(item) => setLightboxItem(item)}
       />
+
+      {/* Floating Direct WhatsApp Chat Button */}
+      <WhatsAppButton />
 
     </div>
   );
