@@ -141,9 +141,9 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
                   </div>
 
                   <div className="bg-white p-6 rounded-3xl border border-slate-200/80 shadow-sm">
-                    <span className="text-[10px] text-slate-400 uppercase font-bold tracking-wider block">Total Investment</span>
-                    <span className="font-serif-heading text-3xl font-extrabold text-slate-900 block mt-1">
-                      ${totalSpent.toLocaleString()}
+                    <span className="text-[10px] text-slate-400 uppercase font-bold tracking-wider block">VIP Tier</span>
+                    <span className="font-serif-heading text-2xl font-extrabold text-slate-900 block mt-1">
+                      Elite Concierge
                     </span>
                     <span className="text-[11px] text-emerald-600 font-semibold">VIP Perks Active</span>
                   </div>
@@ -173,8 +173,8 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
                           <span>👥 {bookings[0].travelers} Guests</span>
                         </p>
                       </div>
-                      <div className="text-right font-serif-heading text-xl font-bold text-[#0F766E]">
-                        ${bookings[0].totalPrice.toLocaleString()}
+                      <div className="text-right font-serif-heading text-sm font-bold text-[#0F766E]">
+                        Confirmed Reservation
                       </div>
                     </div>
                   ) : (
@@ -206,8 +206,8 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
                       </div>
 
                       <div className="text-right">
-                        <span className="font-serif-heading text-xl font-bold text-slate-900 block">${b.totalPrice.toLocaleString()}</span>
-                        <span className="text-[10px] text-emerald-600 font-bold block">Payment Confirmed</span>
+                        <span className="font-serif-heading text-sm font-bold text-slate-900 block">Confirmed Reservation</span>
+                        <span className="text-[10px] text-emerald-600 font-bold block">Status Active</span>
                       </div>
                     </div>
                   ))}
@@ -233,7 +233,7 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
                         <img src={tour.image} alt={tour.title} referrerPolicy="no-referrer" className="w-full h-32 rounded-xl object-cover" />
                         <h4 className="font-serif-heading text-sm font-bold text-slate-900">{tour.title}</h4>
                         <div className="flex justify-between items-center text-xs pt-1">
-                          <span className="font-bold text-[#0F766E]">${tour.price}</span>
+                          <span className="font-bold text-[#0F766E]">Inquire Rate</span>
                           <button
                             onClick={() => onNavigate('tours')}
                             className="px-3 py-1 bg-[#0F766E] text-white text-[10px] font-bold rounded-lg"

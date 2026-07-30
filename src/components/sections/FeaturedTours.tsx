@@ -67,12 +67,10 @@ export const FeaturedTours: React.FC<FeaturedToursProps> = ({
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-black/20" />
 
-                  {/* Discount Badge */}
-                  {tour.discountPercentage && (
-                    <div className="absolute top-4 left-4 bg-amber-500 text-white px-3 py-1 rounded-full text-xs font-extrabold shadow-lg flex items-center gap-1">
-                      <span>SAVE {tour.discountPercentage}%</span>
-                    </div>
-                  )}
+                  {/* VIP Badge */}
+                  <div className="absolute top-4 left-4 bg-[#0F766E] text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg flex items-center gap-1">
+                    <span>VIP Expedition</span>
+                  </div>
 
                   {/* Wishlist Button */}
                   <button
@@ -143,17 +141,10 @@ export const FeaturedTours: React.FC<FeaturedToursProps> = ({
                   {/* Price & Booking Actions */}
                   <div className="pt-4 border-t border-slate-200/80 flex items-center justify-between">
                     <div>
-                      {tour.originalPrice && (
-                        <span className="text-xs text-slate-400 line-through block">
-                          ${tour.originalPrice.toLocaleString()}
-                        </span>
-                      )}
-                      <div className="flex items-baseline gap-1">
-                        <span className="font-serif-heading text-2xl font-extrabold text-[#0F766E]">
-                          ${tour.price.toLocaleString()}
-                        </span>
-                        <span className="text-[11px] text-slate-500 font-medium">/ guest</span>
-                      </div>
+                      <span className="text-[10px] text-slate-400 uppercase font-bold block">Pricing</span>
+                      <span className="font-serif-heading text-lg font-bold text-[#0F766E]">
+                        Price on Request
+                      </span>
                     </div>
 
                     <div className="flex items-center gap-2">

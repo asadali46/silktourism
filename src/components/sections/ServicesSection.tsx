@@ -7,6 +7,13 @@ import {
   Plane, 
   Car, 
   ShieldCheck, 
+  Globe,
+  Heart,
+  Users,
+  Briefcase,
+  Sparkles,
+  Hotel,
+  Sliders,
   ArrowRight, 
   CheckCircle, 
   X 
@@ -23,10 +30,17 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ services, onNa
   const getIcon = (name: string) => {
     switch (name) {
       case 'Compass': return Compass;
+      case 'Globe': return Globe;
+      case 'Heart': return Heart;
+      case 'Users': return Users;
+      case 'Briefcase': return Briefcase;
+      case 'Sparkles': return Sparkles;
+      case 'Hotel': return Hotel;
+      case 'Car': return Car;
+      case 'Sliders': return Sliders;
       case 'Building2': return Building2;
       case 'FileCheck': return FileCheck;
       case 'Plane': return Plane;
-      case 'Car': return Car;
       case 'ShieldCheck': return ShieldCheck;
       default: return Compass;
     }

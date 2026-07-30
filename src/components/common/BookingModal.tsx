@@ -173,15 +173,19 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                 </div>
               </div>
 
-              {/* Price Breakdown Preview */}
-              <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-2">
-                <div className="flex justify-between text-xs text-slate-600">
-                  <span>${activeTour.price.toLocaleString()} x {guests} Guests</span>
-                  <span className="font-semibold text-slate-900">${tourSubtotal.toLocaleString()}</span>
+              {/* Reservation Policy Note */}
+              <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-1">
+                <div className="flex justify-between text-xs text-slate-700 font-bold">
+                  <span>Selected Package:</span>
+                  <span className="text-[#0F766E]">{activeTour.title}</span>
                 </div>
-                <div className="border-t border-slate-200 pt-2 flex justify-between text-sm font-bold text-slate-900">
-                  <span>Total (USD)</span>
-                  <span className="text-[#0F766E]">${tourSubtotal.toLocaleString()}</span>
+                <div className="flex justify-between text-xs text-slate-600">
+                  <span>Party Size:</span>
+                  <span className="font-semibold text-slate-900">{guests} Guests</span>
+                </div>
+                <div className="border-t border-slate-200 pt-2 flex justify-between text-xs font-bold text-slate-900">
+                  <span>Quotation:</span>
+                  <span className="text-[#0F766E]">Custom Quote Provided On Confirmation</span>
                 </div>
               </div>
             </div>
@@ -241,7 +245,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                       <div className="flex-1">
                         <div className="flex items-center justify-between">
                           <span className="text-xs font-bold text-slate-900">{addon.title}</span>
-                          <span className="text-xs font-bold text-[#0F766E]">+${addon.price}</span>
+                          <span className="text-xs font-bold text-[#0F766E]">VIP Service</span>
                         </div>
                         <p className="text-[11px] text-slate-500 mt-0.5">{addon.desc}</p>
                       </div>
@@ -301,11 +305,11 @@ export const BookingModal: React.FC<BookingModalProps> = ({
 
               <div className="bg-amber-50 border border-amber-200 p-3 rounded-2xl flex items-center justify-between">
                 <div>
-                  <p className="text-xs font-bold text-slate-900">Final Grand Total</p>
+                  <p className="text-xs font-bold text-slate-900">Custom Rate Quote</p>
                   <p className="text-[11px] text-slate-500">Includes all taxes, fees & VIP concierge service</p>
                 </div>
-                <span className="font-serif-heading text-xl font-bold text-[#0F766E]">
-                  ${grandTotal.toLocaleString()}
+                <span className="font-serif-heading text-sm font-bold text-[#0F766E]">
+                  Price on Request
                 </span>
               </div>
 

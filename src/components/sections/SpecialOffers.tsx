@@ -55,7 +55,7 @@ export const SpecialOffers: React.FC<SpecialOffersProps> = ({ onNavigate, onOpen
 
               <h2 className="font-serif-heading text-3xl sm:text-5xl font-bold leading-tight">
                 Hunza & Skardu Shangrila <br />
-                <span className="text-amber-300">Luxury Expedition: 20% Off</span>
+                <span className="text-amber-300">Exclusive Luxury Expedition</span>
               </h2>
 
               <p className="text-slate-200 text-xs sm:text-sm max-w-xl leading-relaxed">

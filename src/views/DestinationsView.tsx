@@ -121,8 +121,8 @@ export const DestinationsView: React.FC<DestinationsViewProps> = ({
                 </div>
 
                 <div className="absolute bottom-4 left-4 text-white">
-                  <span className="text-[10px] uppercase font-bold text-teal-200 block">Starting From</span>
-                  <span className="font-serif-heading text-2xl font-bold">${dest.startingPrice.toLocaleString()}</span>
+                  <span className="text-[10px] uppercase font-bold text-teal-200 block">Packages</span>
+                  <span className="font-serif-heading text-lg font-bold">Custom Quote</span>
                 </div>
               </div>
 
@@ -201,9 +201,9 @@ export const DestinationsView: React.FC<DestinationsViewProps> = ({
 
               <div className="pt-4 border-t border-slate-200 flex items-center justify-between">
                 <div>
-                  <span className="text-xs text-slate-400 block">Starting From</span>
-                  <span className="font-serif-heading text-2xl font-bold text-[#0F766E]">
-                    ${modalDest.startingPrice.toLocaleString()}
+                  <span className="text-xs text-slate-400 block">Pricing</span>
+                  <span className="font-serif-heading text-xl font-bold text-[#0F766E]">
+                    Price on Request
                   </span>
                 </div>
 

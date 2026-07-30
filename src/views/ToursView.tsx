@@ -21,15 +21,12 @@ export const ToursView: React.FC<ToursViewProps> = ({
 }) => {
   const [search, setSearch] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
-  const [maxPrice, setMaxPrice] = useState(6000);
-
   const filtered = tours.filter((t) => {
     const matchesSearch =
       t.title.toLowerCase().includes(search.toLowerCase()) ||
       t.location.toLowerCase().includes(search.toLowerCase());
     const matchesCategory = selectedCategory === 'all' || t.category === selectedCategory;
-    const matchesPrice = t.price <= maxPrice;
-    return matchesSearch && matchesCategory && matchesPrice;
+    return matchesSearch && matchesCategory;
   });
 
   return (
@@ -65,7 +62,6 @@ export const ToursView: React.FC<ToursViewProps> = ({
                   onClick={() => {
                     setSearch('');
                     setSelectedCategory('all');
-                    setMaxPrice(6000);
                   }}
                   className="text-xs text-[#0F766E] hover:underline font-semibold"
                 >
@@ -116,23 +112,6 @@ export const ToursView: React.FC<ToursViewProps> = ({
                     </button>
                   ))}
                 </div>
-              </div>
-
-              {/* Price Slider */}
-              <div>
-                <div className="flex justify-between items-center text-xs font-bold text-slate-700 mb-2">
-                  <span>Max Price Per Guest</span>
-                  <span className="text-[#0F766E]">${maxPrice.toLocaleString()}</span>
-                </div>
-                <input
-                  type="range"
-                  min="2000"
-                  max="6000"
-                  step="200"
-                  value={maxPrice}
-                  onChange={(e) => setMaxPrice(Number(e.target.value))}
-                  className="w-full accent-[#0F766E] cursor-pointer"
-                />
               </div>
 
             </div>
@@ -216,9 +195,9 @@ export const ToursView: React.FC<ToursViewProps> = ({
 
                       <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
                         <div>
-                          <span className="text-[10px] text-slate-400 uppercase font-bold block">From</span>
-                          <span className="font-serif-heading text-xl font-bold text-[#0F766E]">
-                            ${tour.price.toLocaleString()}
+                          <span className="text-[10px] text-slate-400 uppercase font-bold block">Pricing</span>
+                          <span className="font-serif-heading text-base font-bold text-[#0F766E]">
+                            Price on Request
                           </span>
                         </div>
 

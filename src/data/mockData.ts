@@ -358,57 +358,93 @@ export const mockTours: TourPackage[] = [
 export const mockServices: ServiceItem[] = [
   {
     id: 'srv-1',
-    title: 'Bespoke Pakistan Tour Packages',
-    shortDesc: 'Tailor-made itineraries designed around Northern Valleys, Mughal Culture, or Coastal drives.',
-    fullDesc: 'Our expert travel architects craft completely custom journeys across Pakistan. From private helicopter charters to Nanga Parbat, luxury glamping in Deosai, to private heritage haveli tours in Lahore, every detail is engineered for royalty.',
+    title: 'Domestic Tours',
+    shortDesc: 'Premium guided tours across Northern Pakistan, Hunza, Skardu, Swat, Kashmir, and Mughal Heritage cities.',
+    fullDesc: 'Explore the breathtaking landscapes of Pakistan with our meticulously planned domestic tour packages. Enjoy luxury Prado transportation, handpicked 5-star mountain resort stays, and experienced local guides across Hunza, Skardu, Fairy Meadows, Swat Valley, and historic Lahore.',
     iconName: 'Compass',
-    features: ['Dedicated Personal Travel Architect', 'Private 4x4 Prado & Helicopter Charters', 'Curated Royal Haveli Access', 'Flexible Daily Schedules'],
+    features: ['Luxury 4x4 Prado Transport', '5-Star Resort Accommodations', 'Local Professional Guides', '24/7 Concierge Support'],
     image: 'https://images.unsplash.com/photo-1589553416260-f586c8f1514f?auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'srv-2',
-    title: '5-Star Resort & Hotel Booking',
-    shortDesc: 'VIP upgrades, complimentary breakfasts, and resort credits at Serena, Shangrila, and PC Hotels.',
-    fullDesc: 'As preferred luxury travel partners with Serena Hotels, Shangrila Resorts, Pearl Continental, and Pearl Resorts, our guests enjoy complimentary suite upgrades, early check-in, late check-out, and VIP welcome amenities.',
-    iconName: 'Building2',
-    features: ['Serena & Shangrila VIP Amenities', 'Guaranteed Room Upgrades', 'Daily Organic Breakfast Included', 'Resort & Spa Credits'],
-    image: 'https://images.unsplash.com/photo-1627894483216-2138af692e32?auto=format&fit=crop&w=800&q=80'
+    title: 'International Tours',
+    shortDesc: 'Seamless worldwide holiday packages with full flight, hotel, and visa facilitation.',
+    fullDesc: 'Embark on unforgettable international adventures with Silk Tourism. We curate tailor-made international travel itineraries across Turkey, UAE, Malaysia, Thailand, Azerbaijan, Europe, and beyond with flight bookings, luxury stays, and guided sightseeing.',
+    iconName: 'Globe',
+    features: ['Worldwide Flight Bookings', 'Curated Sightseeing Tours', 'International Visa Support', 'Luxury Airport Transfers'],
+    image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'srv-3',
-    title: 'NOC & Visa Fast-Track Services',
-    shortDesc: 'Hassle-free e-Visa support, NOC permits for restricted zones, and concierge documentation.',
-    fullDesc: 'Skip the administrative hassle. Our dedicated government relations team handles all Pakistan e-Visas, trek permits, and NOC approvals for restricted border areas with 100% fast-track priority.',
-    iconName: 'FileCheck',
-    features: ['Expedited e-Visa Processing', 'Trek & NOC Border Permits', 'Door-to-Door Courier Service', '100% Approval Guarantee'],
-    image: 'https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80'
+    title: 'Umrah Packages',
+    shortDesc: 'Spiritual Umrah journeys with VIP Makkah & Madinah hotel options, visa support, and transport.',
+    fullDesc: 'Perform your spiritual pilgrimage with comfort and peace of mind. Silk Tourism offers customized Economy, Executive, and VIP Umrah packages featuring direct flight reservations, closest Haram hotel stays in Makkah and Madinah, private Ziyarat tours, and full ground transport.',
+    iconName: 'Heart',
+    features: ['Close-to-Haram Hotel Stays', 'Fast-Track Umrah Visa', 'Private Ziyarat Transportation', '24/7 Dedicated Muallim Assistance'],
+    image: 'https://images.unsplash.com/photo-1565552645632-d725f8bfc19a?auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'srv-4',
-    title: 'Domestic Air & Helicopter Charters',
-    shortDesc: 'Direct flights to Gilgit, Skardu, and Chitral, plus private helicopter charters.',
-    fullDesc: 'Fly in total comfort with guaranteed seats on PIA Gilgit and Skardu flights, or rent private helicopter charters directly from Islamabad to Fairy Meadows, Hunza, and K2 Base Camp.',
-    iconName: 'Plane',
-    features: ['Helicopter Charter Access', 'Airport VIP Meet-and-Greet', 'Guaranteed Northern Flight Seats', '24/7 Weather Monitoring'],
-    image: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=800&q=80'
+    title: 'Group Tours',
+    shortDesc: 'Fun, well-organized fixed-departure group trips for adventure enthusiasts, students, and travelers.',
+    fullDesc: 'Join our friendly and vibrant fixed-departure group tours to Pakistan’s top tourist destinations. Perfect for solo travelers, friends, and adventure groups looking for budget-friendly yet highly comfortable, organized, and safe group travel.',
+    iconName: 'Users',
+    features: ['Fixed Weekly Departures', 'Experienced Tour Leaders', 'Group Bonfire & Musical Nights', 'Budget-Friendly Rates'],
+    image: 'https://images.unsplash.com/photo-1539635278303-d4002c07eae3?auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'srv-5',
-    title: 'Luxury 4x4 Prado & Chauffeur Rental',
-    shortDesc: 'Toyota Land Cruiser Prados, Fortuners, and experienced high-altitude mountain drivers.',
-    fullDesc: 'Navigate Karakoram Highway and rugged valley tracks with our fleet of late-model Toyota Land Cruisers, driven by certified multi-lingual high-altitude mountain drivers.',
-    iconName: 'Car',
-    features: ['Certified High-Altitude Mountain Drivers', 'Toyota Prado & Fortuner Fleet', 'Satellite Phone & GPS Onboard', 'Cold Drinks & Wi-Fi Onboard'],
-    image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80'
+    title: 'Family Trips',
+    shortDesc: 'Safe, stress-free, and memorable vacation packages specially tailored for families of all sizes.',
+    fullDesc: 'Create cherished family memories with our family-first vacation planning. We prioritize child-friendly activities, comfortable family suites, safe transportation, and flexible travel paces to ensure every family member feels relaxed and cared for.',
+    iconName: 'Heart',
+    features: ['Family Suite Reservations', 'Child-Friendly Activities & Meals', 'Private Chauffeur Security', 'Flexible Itinerary Pacing'],
+    image: 'https://images.unsplash.com/photo-1476514525535-ce74f45814ce?auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'srv-6',
-    title: 'Comprehensive Travel Insurance',
-    shortDesc: 'All-inclusive medical, trip cancellation, and high-altitude emergency airlift evacuation.',
-    fullDesc: 'Travel through Pakistan with absolute peace of mind. Our high-limit policy covers mountain emergencies, medical airlift evacuation, trip cancellations, and lost luggage.',
-    iconName: 'ShieldCheck',
-    features: ['High-Altitude Air Evacuation', 'Cancel For Any Reason Coverage', 'Lost Luggage Protection', '24/7 Emergency Hotline'],
-    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80'
+    title: 'Corporate Tours',
+    shortDesc: 'Bespoke corporate retreats, team-building trips, executive conferences, and incentive travel.',
+    fullDesc: 'Elevate your company retreats with Silk Tourism corporate solutions. We organize high-impact corporate retreats, team-building mountain expeditions, annual executive getaways, and conference logistical support tailored to your organization.',
+    iconName: 'Briefcase',
+    features: ['Executive Conference Facilities', 'Team-Building Mountain Activities', 'Corporate Billing & GST Invoicing', 'Dedicated Event Coordinator'],
+    image: 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'srv-7',
+    title: 'Honeymoon Packages',
+    shortDesc: 'Romantic luxury getaways with romantic decor, private candlelit dinners, and serene resorts.',
+    fullDesc: 'Begin your journey together with magical romantic itineraries in Pakistan or abroad. Enjoy flower-adorned resort suites, private lake cruises in Hunza & Shangrila, candlelit dinners under starry mountain skies, and VIP privacy.',
+    iconName: 'Sparkles',
+    features: ['Romantic Room Setup & Flowers', 'Private Candlelit Dinners', 'Luxury Resort Suite Upgrades', 'Complimentary Honeymoon Cake'],
+    image: 'https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'srv-8',
+    title: 'Hotel Bookings',
+    shortDesc: 'Exclusive corporate & luxury rates at Serena Hotels, Shangrila Resort, PC Hotels, and boutique stays.',
+    fullDesc: 'Access discounted rates and room guarantees at Pakistan’s finest luxury resorts and boutique hotels. Benefit from complimentary breakfast, VIP room upgrades, and priority check-in through our direct hotel partnerships.',
+    iconName: 'Hotel',
+    features: ['Direct Hotel Contracting Rates', 'Serena & Shangrila Preferred Partner', 'Complimentary Room Upgrades', 'Instant Confirmation'],
+    image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'srv-9',
+    title: 'Transport Services',
+    shortDesc: 'Late-model fleet of Toyota Land Cruiser Prados, Fortuners, Coasters, and Hi-Ace vans with drivers.',
+    fullDesc: 'Reliable, comfortable, and safe ground transportation services. Rent late-model Toyota Land Cruiser Prados, Fortuners, Grand Cabins, Coasters, and sedans driven by certified professional high-altitude mountain drivers.',
+    iconName: 'Car',
+    features: ['Experienced Mountain Chauffeurs', 'Clean & Sanitized Fleet', 'Fuel & All Toll Taxes Included', '24/7 GPS Tracking & Support'],
+    image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'srv-10',
+    title: 'Customized Packages',
+    shortDesc: '100% tailor-made travel plans built according to your schedule, budget, and specific preferences.',
+    fullDesc: 'Have a unique travel dream in mind? Our travel experts work one-on-one with you to design custom trip itineraries according to your exact dates, desired activities, accommodation preferences, and budget.',
+    iconName: 'Sliders',
+    features: ['100% Flexible Day-by-Day Plan', 'Custom Budget Optimization', 'Personal Travel Architect', 'Instant Quotation Support'],
+    image: 'https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80'
   }
 ];
 

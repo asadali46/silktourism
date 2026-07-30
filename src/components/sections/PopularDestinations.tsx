@@ -97,9 +97,8 @@ export const PopularDestinations: React.FC<PopularDestinationsProps> = ({
 
                 {/* Starting Price Tag */}
                 <div className="absolute bottom-4 left-4 text-white">
-                  <span className="text-[10px] uppercase font-bold text-teal-200 block">From</span>
-                  <span className="font-serif-heading text-2xl font-bold">${dest.startingPrice.toLocaleString()}</span>
-                  <span className="text-xs text-slate-300 font-normal"> / guest</span>
+                  <span className="text-[10px] uppercase font-bold text-teal-200 block">Packages</span>
+                  <span className="font-serif-heading text-lg font-bold">Price on Request</span>
                 </div>
               </div>
 

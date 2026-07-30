@@ -142,7 +142,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({
                     </p>
                   </div>
                   <div className="text-right">
-                    <span className="text-xs font-bold text-[#0F766E] block">${tour.price}</span>
+                    <span className="text-xs font-bold text-[#0F766E] block">Price on Request</span>
                     <span className="text-[10px] text-slate-400 block">{tour.duration}</span>
                   </div>
                 </div>
