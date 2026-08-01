@@ -150,25 +150,35 @@ export const AboutView: React.FC<AboutViewProps> = ({ onNavigate }) => {
             <p className="mt-2 text-xs text-slate-600">Travel professionals committed to delivering unforgettable journeys since 2019.</p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                name: 'Tariq Alvi Khan',
-                role: 'Founder & Chief Executive',
-                image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80'
+                name: 'Saima Ahsan',
+                role: 'CEO / Founder',
+                image: '/src/assets/images/saima_ahsan_ceo_1785581905007.jpg'
               },
               {
-                name: 'Dr. Shahzad Qureshi',
-                role: 'Head of Northern Mountain Expeditions',
-                image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80'
+                name: 'Waqar Zameer',
+                role: 'Director Finance',
+                image: '/src/assets/images/waqar_zameer_finance_1785581923931.jpg'
               },
               {
-                name: 'Fatima Zafar',
-                role: 'Director of Cultural & Heritage Tours',
-                image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80'
+                name: 'Zain Hanif',
+                role: 'Director Marketing',
+                image: '/src/assets/images/zain_hanif_marketing_1785581943014.jpg'
+              },
+              {
+                name: 'Fatima Khan',
+                role: 'Tours Manager',
+                image: '/src/assets/images/fatima_khan_tours_1785581959694.jpg'
+              },
+              {
+                name: 'Maham Siddique',
+                role: 'Relations Manager',
+                image: '/src/assets/images/maham_siddique_rel_1785581977794.jpg'
               }
             ].map((member, idx) => (
-              <div key={idx} className="bg-white rounded-3xl overflow-hidden border border-slate-200/80 p-4 text-center space-y-3 shadow-sm">
+              <div key={idx} className="bg-white rounded-3xl overflow-hidden border border-slate-200/80 p-4 text-center space-y-3 shadow-sm hover:shadow-md transition-shadow">
                 <img
                   src={member.image}
                   alt={member.name}
