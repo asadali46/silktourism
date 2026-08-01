@@ -602,31 +602,129 @@ export const mockUserBookings: UserBooking[] = [
   {
     id: 'BK-9281',
     tourId: 'tour-1',
-    tourTitle: 'Hunza & Attabad Lake Luxury VIP Expedition',
+    tourTitle: 'Islamabad - Skardu - Hunza Grand Circuit Expedition',
     tourImage: 'https://images.unsplash.com/photo-1589553416260-f586c8f1514f?auto=format&fit=crop&w=1200&q=80',
     bookingDate: '2026-07-15',
-    travelDate: '2026-10-10',
+    travelDate: '2026-08-01',
     travelers: 2,
     totalPrice: 390000,
     status: 'confirmed',
     paymentStatus: 'paid',
     customerName: 'Asad Khan',
     customerEmail: 'asad2406f@aptechsite.net',
-    specialRequests: 'Dietary preference: Halal organic food; VIP airport 4x4 Prado transfer confirmed.'
+    customerPhone: '03432126930',
+    specialRequests: 'Halal organic food preference; VIP 4x4 Prado transfer confirmed.',
+    routeTracker: {
+      currentStopIndex: 1,
+      currentLocationName: 'Skardu Valley',
+      nextLocationName: 'Hunza & Attabad Lake',
+      overallStatus: 'En Route',
+      driverName: 'Captain Tariq Shah',
+      driverPhone: '0343 2126930',
+      vehicleNumber: 'LEB-4921 (Toyota Prado 4x4)',
+      stops: [
+        {
+          id: 'stop-1',
+          name: 'Islamabad (Departure)',
+          status: 'completed',
+          date: 'Aug 01, 2026',
+          stayHotel: 'Serena Hotel Islamabad',
+          activities: ['Airport Meet & Greet', 'Briefing Session', 'Private Flight to Skardu'],
+          notes: 'Departed Islamabad airport on schedule at 08:30 AM.',
+          weather: '32°C Sunny'
+        },
+        {
+          id: 'stop-2',
+          name: 'Skardu & Shangrila Lake',
+          status: 'active',
+          date: 'Aug 02 - Aug 04, 2026',
+          stayHotel: 'Shangrila Resort Skardu',
+          activities: ['Upper Kachura Lake Boating', 'Deosai Plains Safari', 'Cold Desert Sunset'],
+          notes: 'Currently checked into Shangrila Resort. Deosai Jeep tour completed.',
+          weather: '21°C Clear Skies'
+        },
+        {
+          id: 'stop-3',
+          name: 'Hunza Valley & Attabad Lake',
+          status: 'upcoming',
+          date: 'Aug 05 - Aug 07, 2026',
+          stayHotel: 'Luxus Grand Hunza',
+          activities: ['Altit & Baltit Forts', 'Attabad Turquoise Lake Cruise', 'Hussaini Suspension Bridge Walk'],
+          notes: 'Transfer scheduled via Karakoram Highway at 09:00 AM.',
+          weather: '19°C Pleasant'
+        },
+        {
+          id: 'stop-4',
+          name: 'Khunjerab Pass (Pak-China Border)',
+          status: 'upcoming',
+          date: 'Aug 08, 2026',
+          stayHotel: 'Passu Cones Lodge',
+          activities: ['World highest ATM visit', 'Passu Cones view point', 'Glacier trek'],
+          notes: 'Passu Jeep excursion arranged.',
+          weather: '8°C Chilly'
+        },
+        {
+          id: 'stop-5',
+          name: 'Return to Islamabad',
+          status: 'upcoming',
+          date: 'Aug 09, 2026',
+          stayHotel: 'N/A (Flight Return)',
+          activities: ['Gilgit Airport transfer', 'Flight back to Islamabad', 'Drop-off at residence'],
+          notes: 'Final drop-off scheduled.',
+          weather: '31°C Sunny'
+        }
+      ]
+    }
   },
   {
     id: 'BK-8842',
     tourId: 'tour-3',
-    tourTitle: 'Royal Lahore Mughal Cultural & Culinary Odyssey',
+    tourTitle: 'Royal Lahore & Swat Valley Cultural Explorer',
     tourImage: 'https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?auto=format&fit=crop&w=1200&q=80',
     bookingDate: '2026-06-01',
-    travelDate: '2026-09-18',
+    travelDate: '2026-06-15',
     travelers: 2,
     totalPrice: 270000,
     status: 'completed',
     paymentStatus: 'paid',
     customerName: 'Asad Khan',
-    customerEmail: 'asad2406f@aptechsite.net'
+    customerEmail: 'asad2406f@aptechsite.net',
+    customerPhone: '03432126930',
+    routeTracker: {
+      currentStopIndex: 3,
+      currentLocationName: 'Islamabad (Tour Finished)',
+      nextLocationName: 'Completed',
+      overallStatus: 'Tour Completed',
+      driverName: 'Farhan Ali',
+      driverPhone: '0343 2126930',
+      vehicleNumber: 'ICT-1082',
+      stops: [
+        {
+          id: 'stop-101',
+          name: 'Lahore Walled City',
+          status: 'completed',
+          date: 'Jun 15, 2026',
+          stayHotel: 'Pearl Continental Lahore',
+          weather: '35°C Sunny'
+        },
+        {
+          id: 'stop-102',
+          name: 'Swat Valley & Malam Jabba',
+          status: 'completed',
+          date: 'Jun 18, 2026',
+          stayHotel: 'Swat Serena Hotel',
+          weather: '24°C Breezy'
+        },
+        {
+          id: 'stop-103',
+          name: 'Islamabad Return',
+          status: 'completed',
+          date: 'Jun 21, 2026',
+          stayHotel: 'Home',
+          weather: '33°C Sunny'
+        }
+      ]
+    }
   }
 ];
 

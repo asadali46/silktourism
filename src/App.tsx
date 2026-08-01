@@ -54,7 +54,7 @@ export default function App() {
 
   // Currency & Role State
   const [currency, setCurrency] = useState<string>('PKR');
-  const [userRole, setUserRole] = useState<'customer' | 'admin' | null>(null);
+  const [userRole, setUserRole] = useState<'customer' | 'admin' | null>('customer');
 
   // Data Collections State
   const [destinations] = useState<Destination[]>(mockDestinations);
@@ -81,16 +81,11 @@ export default function App() {
     setToasts((prev) => [...prev, { id, title, message, type }]);
   };
 
-  const handleLogin = (role: 'customer' | 'admin') => {
-    setUserRole(role);
+  const handleLogin = (userData: { name: string; email: string; phone: string }) => {
+    setUserRole('customer');
     setIsAuthModalOpen(false);
-    if (role === 'customer') {
-      addToast('Welcome back!', 'Logged in as Client.');
-      handleNavigate('customer-dashboard');
-    } else {
-      addToast('Welcome Administrator!', 'Logged in as Admin.');
-      handleNavigate('admin-dashboard');
-    }
+    addToast(`Welcome back, ${userData.name}!`, 'Accessing your bookings & live trip tracker.');
+    handleNavigate('customer-dashboard');
   };
 
   const handleLogout = () => {
@@ -354,22 +349,24 @@ export default function App() {
                 <div className="w-16 h-16 bg-teal-50 border border-teal-200 rounded-full flex items-center justify-center mx-auto text-[#0F766E]">
                   <User className="w-8 h-8" />
                 </div>
-                <h2 className="font-serif-heading text-2xl font-bold text-slate-900">Client Portal Sign-In Required</h2>
+                <h2 className="font-serif-heading text-2xl font-bold text-slate-900">Traveler Account Required</h2>
                 <p className="text-xs text-slate-600 leading-relaxed">
-                  Please sign in with a Client account to view your active bookings, saved itineraries, and personalized travel concierge services. Guest users can explore destinations and tours directly.
+                  Sign in or create a traveler account to view your confirmed bookings, printable e-ticket vouchers, and live multi-destination route tracking (Islamabad ➡️ Skardu ➡️ Hunza).
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3 pt-2">
                   <button
                     onClick={() => setIsAuthModalOpen(true)}
                     className="flex-1 py-3 bg-[#0F766E] hover:bg-teal-700 text-white rounded-xl font-bold text-xs uppercase tracking-wider shadow"
                   >
-                    Sign In as Client
+                    Sign In / Register Account
                   </button>
                   <button
-                    onClick={() => handleNavigate('home')}
+                    onClick={() => {
+                      setUserRole('customer');
+                    }}
                     className="flex-1 py-3 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-xl font-bold text-xs uppercase tracking-wider"
                   >
-                    Guest Mode (Explore Site)
+                    Demo Traveler View
                   </button>
                 </div>
               </div>

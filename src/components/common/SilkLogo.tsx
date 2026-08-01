@@ -1,4 +1,5 @@
 import React from 'react';
+import logoImg from '../../assets/images/logo.png';
 
 interface SilkLogoProps {
   className?: string;
@@ -14,19 +15,19 @@ export const SilkLogo: React.FC<SilkLogoProps> = ({
   lightText = false
 }) => {
   const sizeMap = {
-    sm: { icon: 'w-7 h-7', text: 'text-xl', badge: 'h-10' },
-    md: { icon: 'w-10 h-10', text: 'text-2xl', badge: 'h-14' },
-    lg: { icon: 'w-14 h-14', text: 'text-3xl', badge: 'h-20' },
-    xl: { icon: 'w-20 h-20', text: 'text-5xl', badge: 'h-32' },
+    sm: { icon: 'h-8 w-auto', text: 'text-xl', badge: 'h-16' },
+    md: { icon: 'h-11 w-auto', text: 'text-2xl', badge: 'h-24' },
+    lg: { icon: 'h-16 w-auto', text: 'text-3xl', badge: 'h-32' },
+    xl: { icon: 'h-24 w-auto', text: 'text-5xl', badge: 'h-44' },
   };
 
   if (variant === 'full') {
     return (
       <div className={`inline-flex flex-col items-center justify-center ${className}`}>
         <img
-          src="/src/assets/images/silk_logo.svg"
+          src={logoImg}
           alt="Silk Tourism Logo"
-          className={`${sizeMap[size].badge} w-auto object-contain drop-shadow-md`}
+          className={`${sizeMap[size].badge} w-auto object-contain rounded-xl shadow-sm`}
         />
       </div>
     );
@@ -35,22 +36,22 @@ export const SilkLogo: React.FC<SilkLogoProps> = ({
   if (variant === 'icon') {
     return (
       <img
-        src="/src/assets/images/silk_logo.svg"
+        src={logoImg}
         alt="Silk Tourism Icon"
-        className={`${sizeMap[size].icon} object-contain ${className}`}
+        className={`${sizeMap[size].icon} object-contain rounded-lg ${className}`}
       />
     );
   }
 
   // Horizontal variant (default)
   return (
-    <div className={`inline-flex items-center gap-2.5 ${className}`}>
+    <div className={`inline-flex items-center gap-3 ${className}`}>
       <img
-        src="/src/assets/images/silk_logo.svg"
+        src={logoImg}
         alt="Silk Tourism Emblem"
-        className={`${sizeMap[size].icon} object-contain transition-transform group-hover:scale-105`}
+        className={`${sizeMap[size].icon} max-h-12 object-contain rounded-lg transition-transform group-hover:scale-105`}
       />
-      <span className="font-extrabold tracking-tight text-[#0F766E] font-serif-heading leading-none" style={{ fontSize: size === 'sm' ? '1.1rem' : size === 'lg' ? '1.75rem' : '1.35rem' }}>
+      <span className={`font-extrabold tracking-tight font-serif-heading leading-none ${lightText ? 'text-white' : 'text-[#0F766E]'}`} style={{ fontSize: size === 'sm' ? '1.1rem' : size === 'lg' ? '1.75rem' : '1.35rem' }}>
         SILK<span className="text-[#F59E0B]">TOURISM</span>
       </span>
     </div>

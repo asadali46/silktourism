@@ -110,6 +110,28 @@ export interface BlogPost {
   featured?: boolean;
 }
 
+export interface RouteStop {
+  id: string;
+  name: string;
+  status: 'completed' | 'active' | 'upcoming';
+  date: string;
+  stayHotel?: string;
+  activities?: string[];
+  notes?: string;
+  weather?: string;
+}
+
+export interface RouteTrackerInfo {
+  currentStopIndex: number;
+  currentLocationName: string;
+  nextLocationName: string;
+  overallStatus: 'En Route' | 'Preparing Departure' | 'Tour Completed' | 'On Schedule';
+  driverName?: string;
+  driverPhone?: string;
+  vehicleNumber?: string;
+  stops: RouteStop[];
+}
+
 export interface UserBooking {
   id: string;
   tourId: string;
@@ -123,7 +145,9 @@ export interface UserBooking {
   paymentStatus: 'paid' | 'unpaid' | 'refunded';
   customerName: string;
   customerEmail: string;
+  customerPhone?: string;
   specialRequests?: string;
+  routeTracker?: RouteTrackerInfo;
 }
 
 export interface NotificationItem {

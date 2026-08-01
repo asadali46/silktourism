@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Phone, Mail, MapPin, Send, MessageSquare, ChevronDown, CheckCircle2 } from 'lucide-react';
+import { Phone, Mail, MapPin, Send, MessageSquare, ChevronDown, CheckCircle2, Facebook } from 'lucide-react';
 
 interface ContactViewProps {
   onShowToast: (title: string, message?: string) => void;
@@ -101,22 +101,42 @@ export const ContactView: React.FC<ContactViewProps> = ({ onShowToast }) => {
                 </div>
               </div>
 
-              <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-2xl flex items-center justify-between">
-                <div>
-                  <p className="text-xs font-bold text-slate-900 flex items-center gap-1.5">
-                    <MessageSquare className="w-4 h-4 text-emerald-600" />
-                    <span>Instant WhatsApp Desk</span>
-                  </p>
-                  <p className="text-[11px] text-slate-500">Business WhatsApp: 0343 2126930 (24/7 Support)</p>
+              <div className="space-y-3">
+                <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-2xl flex items-center justify-between">
+                  <div>
+                    <p className="text-xs font-bold text-slate-900 flex items-center gap-1.5">
+                      <MessageSquare className="w-4 h-4 text-emerald-600" />
+                      <span>Instant WhatsApp Desk</span>
+                    </p>
+                    <p className="text-[11px] text-slate-500">Business WhatsApp: 0343 2126930 (24/7 Support)</p>
+                  </div>
+                  <a
+                    href="https://wa.me/923432126930"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow transition-colors"
+                  >
+                    Chat
+                  </a>
                 </div>
-                <a
-                  href="https://wa.me/923432126930"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow"
-                >
-                  Chat
-                </a>
+
+                <div className="p-4 bg-blue-50 border border-blue-200 rounded-2xl flex items-center justify-between">
+                  <div>
+                    <p className="text-xs font-bold text-slate-900 flex items-center gap-1.5">
+                      <Facebook className="w-4 h-4 text-blue-600" />
+                      <span>Official Facebook Page</span>
+                    </p>
+                    <p className="text-[11px] text-slate-500">Follow us for travel updates & live dispatches</p>
+                  </div>
+                  <a
+                    href="https://www.facebook.com/share/18yQxjLYec/"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-xl shadow transition-colors whitespace-nowrap"
+                  >
+                    Visit Page
+                  </a>
+                </div>
               </div>
             </div>
           </div>

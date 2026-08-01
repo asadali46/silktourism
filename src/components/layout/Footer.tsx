@@ -69,15 +69,18 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onSubscribeNewslette
             {/* Social Links */}
             <div className="flex items-center gap-3 pt-2">
               {[
-                { icon: Instagram, href: '#' },
-                { icon: Facebook, href: '#' },
-                { icon: Twitter, href: '#' },
-                { icon: Linkedin, href: '#' },
-                { icon: Youtube, href: '#' }
+                { icon: Instagram, href: '#', name: 'Instagram' },
+                { icon: Facebook, href: 'https://www.facebook.com/share/18yQxjLYec/', name: 'Facebook' },
+                { icon: Twitter, href: '#', name: 'Twitter' },
+                { icon: Linkedin, href: '#', name: 'LinkedIn' },
+                { icon: Youtube, href: '#', name: 'YouTube' }
               ].map((soc, idx) => (
                 <a
                   key={idx}
                   href={soc.href}
+                  target={soc.href.startsWith('http') ? '_blank' : undefined}
+                  rel={soc.href.startsWith('http') ? 'noreferrer' : undefined}
+                  aria-label={soc.name}
                   className="w-9 h-9 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:bg-[#0F766E] hover:border-[#0F766E] transition-all transform hover:-translate-y-0.5"
                 >
                   <soc.icon className="w-4 h-4" />
