@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 340" width="100%" height="100%">
+  <defs>
+    <linearGradient id="gold-banner" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#F59E0B" />
+      <stop offset="50%" stop-color="#FBBF24" />
+      <stop offset="100%" stop-color="#D97706" />
+    </linearGradient>
+    <linearGradient id="mountain-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#78350F" />
+      <stop offset="100%" stop-color="#451A03" />
+    </linearGradient>
+    <linearGradient id="silk-green" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10B981" />
+      <stop offset="100%" stop-color="#047857" />
+    </linearGradient>
+  </defs>
+
+  <!-- Sun Rays Arch at Top -->
+  <g stroke="#EAB308" stroke-width="3.5" stroke-linecap="round">
+    <!-- Ray lines extending upwards -->
+    <line x1="160" y1="22" x2="160" y2="34" />
+    <line x1="130" y1="28" x2="134" y2="40" />
+    <line x1="190" y1="28" x2="186" y2="40" />
+    <line x1="102" y1="44" x2="108" y2="54" />
+    <line x1="218" y1="44" x2="212" y2="54" />
+    <line x1="78" y1="68" x2="86" y2="76" />
+    <line x1="242" y1="68" x2="234" y2="76" />
+    <line x1="60" y1="98" x2="70" y2="104" />
+    <line x1="260" y1="98" x2="250" y2="104" />
+    <line x1="48" y1="132" x2="60" y2="135" />
+    <line x1="272" y1="132" x2="260" y2="135" />
+  </g>
+
+  <!-- Arc concentric lines above mountains -->
+  <path d="M 68,140 A 105,105 0 0,1 252,140" fill="none" stroke="#EAB308" stroke-width="2.5" />
+  <path d="M 80,126 A 92,92 0 0,1 240,126" fill="none" stroke="#EAB308" stroke-width="1.8" />
+
+  <!-- Mountains -->
+  <!-- Left Mountain Peak -->
+  <polygon points="76,144 136,70 174,130 160,144" fill="url(#mountain-grad)" />
+  <!-- Left Snow Cap -->
+  <polygon points="136,70 124,86 130,92 136,84 144,94 152,88 142,78" fill="#FFFFFF" />
+
+  <!-- Main Central Peak -->
+  <polygon points="112,144 176,58 238,136 210,144" fill="url(#mountain-grad)" />
+  <!-- Main Snow Cap -->
+  <polygon points="176,58 160,80 168,88 174,78 184,92 194,86 186,74" fill="#FFFFFF" />
+
+  <!-- Right Mountain Peak -->
+  <polygon points="160,144 212,82 254,144" fill="#6B21A8" opacity="0" />
+  <polygon points="160,144 212,82 254,144" fill="url(#mountain-grad)" />
+  <!-- Right Snow Cap -->
+  <polygon points="212,82 202,96 208,102 216,94 224,104 230,98 220,90" fill="#FFFFFF" />
+
+  <!-- "Silk" Text Brush Calligraphy -->
+  <g fill="url(#silk-green)">
+    <!-- S -->
+    <path d="M 92,166 C 84,166 78,174 80,186 C 82,196 94,200 102,204 C 112,208 116,214 114,222 C 112,232 98,236 84,232 C 80,230 78,226 80,222 C 84,222 88,224 94,224 C 104,224 108,218 106,212 C 104,206 94,202 86,198 C 76,194 72,186 74,176 C 76,164 92,158 106,160 C 112,161 114,166 110,168 C 104,166 98,166 92,166 Z" />
+    <!-- i -->
+    <path d="M 124,188 L 134,186 L 126,230 L 116,232 Z" />
+    <circle cx="132" cy="174" r="5" />
+    <!-- l -->
+    <path d="M 148,154 L 158,150 L 144,230 L 134,232 Z" />
+    <!-- k -->
+    <path d="M 168,152 L 178,148 L 164,230 L 154,232 Z" />
+    <path d="M 166,194 Q 186,180 196,174 C 200,172 204,176 198,182 L 180,198 L 204,224 C 208,228 204,232 196,232 L 176,204 Z" />
+  </g>
+
+  <!-- Yellow/Gold Ribbon Banner for "TOURISM" -->
+  <g id="ribbon-banner">
+    <!-- Ribbon Left Fold End -->
+    <polygon points="56,268 84,258 84,284 56,294 66,281" fill="#B45309" />
+    <!-- Ribbon Right Fold End -->
+    <polygon points="264,268 236,258 236,284 264,294 254,281" fill="#B45309" />
+
+    <!-- Ribbon Main Body -->
+    <polygon points="74,256 246,256 236,290 84,290" fill="url(#gold-banner)" stroke="#D97706" stroke-width="1" />
+    <polygon points="74,256 246,256 242,260 78,260" fill="#FDE047" opacity="0.6" />
+
+    <!-- "TOURISM" Text -->
+    <text x="160" y="280" font-family="'Plus Jakarta Sans', 'Arial Black', sans-serif" font-weight="900" font-size="21" fill="#451A03" text-anchor="middle" letter-spacing="4">TOURISM</text>
+  </g>
+
+  <!-- Bottom Pine Tree & Detail Elements -->
+  <!-- Left accent lines -->
+  <line x1="104" y1="304" x2="128" y2="304" stroke="#D97706" stroke-width="2" stroke-linecap="round" />
+  <line x1="110" y1="310" x2="128" y2="310" stroke="#D97706" stroke-width="1.5" stroke-linecap="round" />
+  
+  <!-- Right accent lines -->
+  <line x1="192" y1="304" x2="216" y2="304" stroke="#D97706" stroke-width="2" stroke-linecap="round" />
+  <line x1="192" y1="310" x2="210" y2="310" stroke="#D97706" stroke-width="1.5" stroke-linecap="round" />
+
+  <!-- Center Pine Tree -->
+  <g fill="#059669">
+    <polygon points="160,296 150,310 170,310" />
+    <polygon points="160,302 145,318 175,318" />
+    <polygon points="160,310 140,326 180,326" />
+    <!-- Tree Trunk -->
+    <rect x="157" y="326" width="6" height="5" fill="#78350F" />
+  </g>
+
+  <!-- Bottom radiating rays/dots -->
+  <g stroke="#EAB308" stroke-width="2.5" stroke-linecap="round">
+    <line x1="136" y1="332" x2="134" y2="338" />
+    <line x1="160" y1="335" x2="160" y2="341" />
+    <line x1="184" y1="332" x2="186" y2="338" />
+  </g>
+</svg>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { PageView } from '../../types';
+import { SilkLogo } from '../common/SilkLogo';
 import { 
   Compass, 
   Search, 
@@ -82,9 +83,9 @@ export const Header: React.FC<HeaderProps> = ({
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-2">
           {/* Left: Contact Info */}
           <div className="flex items-center gap-4 text-teal-100">
-            <a href="tel:+928008887455" className="flex items-center gap-1.5 hover:text-amber-300 transition-colors">
+            <a href="tel:+923432126930" className="flex items-center gap-1.5 hover:text-amber-300 transition-colors">
               <Phone className="w-3.5 h-3.5 text-amber-300" />
-              <span className="tracking-normal font-semibold">+92 (800) 888-SILK</span>
+              <span className="tracking-normal font-semibold">+92 343 2126930</span>
             </a>
             <span className="hidden sm:inline text-teal-500">|</span>
             <a href="mailto:concierge@silktourism.pk" className="hidden sm:flex items-center gap-1.5 hover:text-amber-300 transition-colors">
@@ -149,17 +150,10 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Logo */}
           <div 
             onClick={() => onNavigate('home')} 
-            className="flex items-center gap-2.5 cursor-pointer group"
+            className="cursor-pointer group py-1"
             id="brand-logo"
           >
-            <div className="w-10 h-10 bg-[#0F766E] rounded-xl flex items-center justify-center text-white shadow-md shadow-teal-900/20 group-hover:scale-105 transition-transform">
-              <Compass className="w-6 h-6 text-white" />
-            </div>
-            <div>
-              <span className="text-2xl font-bold tracking-tight text-[#0F766E]">
-                SILK<span className="text-[#F59E0B]">TOURISM</span>
-              </span>
-            </div>
+            <SilkLogo variant="horizontal" size="md" />
           </div>
 
           {/* Desktop Navigation Links */}

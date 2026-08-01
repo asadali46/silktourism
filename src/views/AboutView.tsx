@@ -1,5 +1,6 @@
 import React from 'react';
 import { PageView } from '../types';
+import { SilkLogo } from '../components/common/SilkLogo';
 import { Compass, ShieldCheck, Award, Globe, Users, Target, Eye, Calendar, Sparkles } from 'lucide-react';
 
 interface AboutViewProps {
@@ -10,8 +11,11 @@ export const AboutView: React.FC<AboutViewProps> = ({ onNavigate }) => {
   return (
     <div className="pt-28 pb-20 bg-[#F8FAFC]">
       {/* Hero Banner */}
-      <div className="bg-[#0F172A] text-white py-20 border-b border-slate-800 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center max-w-3xl">
+      <div className="bg-[#0F172A] text-white py-16 border-b border-slate-800 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center max-w-3xl flex flex-col items-center">
+          <div className="mb-6 p-4 bg-white/5 border border-white/10 rounded-3xl backdrop-blur-md">
+            <SilkLogo variant="full" size="xl" />
+          </div>
           <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/20 text-amber-400 px-4 py-1.5 rounded-full text-xs font-bold mb-4">
             <Calendar className="w-3.5 h-3.5" />
             <span>Established in 2019</span>

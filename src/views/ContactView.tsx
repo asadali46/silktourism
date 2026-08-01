@@ -85,8 +85,8 @@ export const ContactView: React.FC<ContactViewProps> = ({ onShowToast }) => {
                     <Phone className="w-5 h-5" />
                   </div>
                   <div>
-                    <p className="font-bold text-slate-900">Telephone Concierge</p>
-                    <p>+92 (800) 888-SILK / +92 (51) 555-7455</p>
+                    <p className="font-bold text-slate-900">Telephone Concierge & Business Account</p>
+                    <p>+92 343 2126930 (0343-2126930)</p>
                   </div>
                 </div>
 
@@ -107,10 +107,10 @@ export const ContactView: React.FC<ContactViewProps> = ({ onShowToast }) => {
                     <MessageSquare className="w-4 h-4 text-emerald-600" />
                     <span>Instant WhatsApp Desk</span>
                   </p>
-                  <p className="text-[11px] text-slate-500">Available 24 hours a day for immediate assistance.</p>
+                  <p className="text-[11px] text-slate-500">Business WhatsApp: 0343 2126930 (24/7 Support)</p>
                 </div>
                 <a
-                  href="https://wa.me/928008887455"
+                  href="https://wa.me/923432126930"
                   target="_blank"
                   rel="noreferrer"
                   className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow"

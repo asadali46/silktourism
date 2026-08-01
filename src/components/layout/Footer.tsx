@@ -1,5 +1,6 @@
 import React from 'react';
 import { PageView } from '../../types';
+import { SilkLogo } from '../common/SilkLogo';
 import { 
   Compass, 
   Phone, 
@@ -41,19 +42,9 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onSubscribeNewslette
           <div className="lg:col-span-2 space-y-4">
             <div 
               onClick={() => onNavigate('home')} 
-              className="flex items-center gap-2.5 cursor-pointer group inline-flex"
+              className="cursor-pointer group inline-flex"
             >
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#0F766E] to-amber-500 flex items-center justify-center text-white shadow-lg">
-                <Compass className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <span className="font-serif-heading text-2xl font-bold tracking-tight text-white block leading-none">
-                  Silk <span className="text-[#0F766E]">Tourism</span>
-                </span>
-                <span className="text-[10px] uppercase tracking-widest text-slate-400 font-semibold block mt-0.5">
-                  Luxury Travel Architecture
-                </span>
-              </div>
+              <SilkLogo variant="horizontal" size="lg" lightText={true} />
             </div>
 
             <p className="text-slate-400 text-sm leading-relaxed max-w-sm">
@@ -67,7 +58,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onSubscribeNewslette
               </div>
               <div className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-[#0F766E]" />
-                <span>+92 (800) 888-SILK / +92 (51) 555-7455</span>
+                <a href="tel:+923432126930" className="hover:text-amber-400 transition-colors">+92 343 2126930 (0343-2126930)</a>
               </div>
               <div className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-[#0F766E]" />

@@ -7,7 +7,7 @@ interface WhatsAppButtonProps {
 }
 
 export const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
-  phoneNumber = '923001234567',
+  phoneNumber = '923432126930',
   defaultMessage = 'Hello Silk Tourism, I would like to inquire about your travel packages and concierge services.',
 }) => {
   const [showTooltip, setShowTooltip] = useState(true);
