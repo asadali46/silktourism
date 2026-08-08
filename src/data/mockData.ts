@@ -415,7 +415,7 @@ export const mockServices: ServiceItem[] = [
     title: 'Honeymoon Packages',
     shortDesc: 'Romantic luxury getaways with romantic decor, private candlelit dinners, and serene resorts.',
     fullDesc: 'Begin your journey together with magical romantic itineraries in Pakistan or abroad. Enjoy flower-adorned resort suites, private lake cruises in Hunza & Shangrila, candlelit dinners under starry mountain skies, and VIP privacy.',
-    iconName: 'Sparkles',
+    iconName: 'Heart',
     features: ['Romantic Room Setup & Flowers', 'Private Candlelit Dinners', 'Luxury Resort Suite Upgrades', 'Complimentary Honeymoon Cake'],
     image: 'https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=800&q=80'
   },

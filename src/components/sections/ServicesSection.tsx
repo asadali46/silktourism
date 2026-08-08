@@ -11,7 +11,7 @@ import {
   Heart,
   Users,
   Briefcase,
-  Sparkles,
+  Award,
   Hotel,
   Sliders,
   ArrowRight, 
@@ -34,7 +34,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ services, onNa
       case 'Heart': return Heart;
       case 'Users': return Users;
       case 'Briefcase': return Briefcase;
-      case 'Sparkles': return Sparkles;
+      case 'Award': return Award;
       case 'Hotel': return Hotel;
       case 'Car': return Car;
       case 'Sliders': return Sliders;

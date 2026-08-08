@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Sparkles, ArrowRight, Timer, Tag, ShieldCheck } from 'lucide-react';
+import { ArrowRight, Timer, Tag, ShieldCheck } from 'lucide-react';
 import { PageView } from '../../types';
 
 interface SpecialOffersProps {

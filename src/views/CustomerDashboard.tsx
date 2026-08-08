@@ -12,7 +12,6 @@ import {
   FileText, 
   Printer, 
   X, 
-  Sparkles, 
   Heart, 
   Bell, 
   PlusCircle, 
@@ -103,7 +102,7 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
               onClick={onOpenBooking}
               className="px-5 py-2.5 bg-[#0F766E] hover:bg-teal-700 text-white text-xs font-bold rounded-xl shadow transition-all flex items-center gap-1.5"
             >
-              <Sparkles className="w-4 h-4 text-amber-300" />
+              <PlusCircle className="w-4 h-4 text-amber-300" />
               <span>Book New Package</span>
             </button>
             <a
@@ -393,7 +392,7 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
           <div className="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200/80 shadow-md space-y-6">
             <div>
               <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-amber-500/10 text-amber-700 rounded-full text-xs font-bold mb-2">
-                <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+                <Compass className="w-3.5 h-3.5 text-amber-500" />
                 <span>Custom Travel Architecture</span>
               </div>
               <h3 className="font-serif-heading text-2xl font-bold text-slate-900">Plan a Custom Multi-Destination Circuit</h3>

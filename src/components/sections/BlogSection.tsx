@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { BlogPost, PageView } from '../../types';
-import { Clock, ArrowRight, User, Sparkles, X } from 'lucide-react';
+import { Clock, ArrowRight, User, X } from 'lucide-react';
 
 interface BlogSectionProps {
   posts: BlogPost[];

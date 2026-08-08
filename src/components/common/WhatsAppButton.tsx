@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MessageCircle, X, Sparkles } from 'lucide-react';
+import { MessageCircle, X, ShieldCheck } from 'lucide-react';
 
 interface WhatsAppButtonProps {
   phoneNumber?: string;
@@ -24,7 +24,7 @@ export const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
           <div>
             <div className="flex items-center gap-1 font-bold text-slate-900 text-[11px]">
               <span>Silk WhatsApp Concierge</span>
-              <Sparkles className="w-3 h-3 text-amber-500" />
+              <ShieldCheck className="w-3 h-3 text-[#0F766E]" />
             </div>
             <p className="text-[11px] text-slate-500 leading-tight">Instant tour support & custom bookings</p>
           </div>

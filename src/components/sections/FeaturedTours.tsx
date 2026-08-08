@@ -1,6 +1,6 @@
 import React from 'react';
 import { TourPackage, PageView } from '../../types';
-import { Star, Clock, Users, MapPin, Heart, ArrowRight, Sparkles, CheckCircle2 } from 'lucide-react';
+import { Star, Clock, Users, MapPin, Heart, ArrowRight, Award, CheckCircle2 } from 'lucide-react';
 
 interface FeaturedToursProps {
   tours: TourPackage[];
@@ -27,7 +27,7 @@ export const FeaturedTours: React.FC<FeaturedToursProps> = ({
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
             <div className="inline-flex items-center gap-1.5 bg-amber-50 border border-amber-200 text-amber-800 px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider mb-2">
-              <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+              <Award className="w-3.5 h-3.5 text-amber-500" />
               <span>Handpicked Masterpiece Itineraries</span>
             </div>
             <h2 className="font-serif-heading text-3xl sm:text-5xl font-bold text-slate-900 tracking-tight">

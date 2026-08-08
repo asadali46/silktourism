@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, User, Mail, Lock, LogIn, ArrowRight, Sparkles, Phone, CheckCircle2 } from 'lucide-react';
+import { X, User, Mail, Lock, LogIn, ArrowRight, ShieldCheck, Phone, CheckCircle2 } from 'lucide-react';
 
 interface AuthModalProps {
   isOpen: boolean;
@@ -53,7 +53,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
           </button>
 
           <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-amber-500/20 text-amber-300 rounded-full text-[11px] font-bold uppercase tracking-wider mb-2">
-            <Sparkles className="w-3.5 h-3.5 text-amber-300" />
+            <ShieldCheck className="w-3.5 h-3.5 text-amber-300" />
             <span>Silk Tourism Traveler Account</span>
           </div>
 

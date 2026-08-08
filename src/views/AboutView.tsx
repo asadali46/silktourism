@@ -1,7 +1,7 @@
 import React from 'react';
 import { PageView } from '../types';
 import { SilkLogo } from '../components/common/SilkLogo';
-import { Compass, ShieldCheck, Award, Globe, Users, Target, Eye, Calendar, Sparkles } from 'lucide-react';
+import { Compass, ShieldCheck, Award, Globe, Users, Target, Eye, Calendar } from 'lucide-react';
 
 interface AboutViewProps {
   onNavigate: (view: PageView) => void;
@@ -87,7 +87,7 @@ export const AboutView: React.FC<AboutViewProps> = ({ onNavigate }) => {
 
             <div className="mt-8 pt-4 border-t border-white/15 text-xs text-teal-100 font-semibold flex items-center justify-between">
               <span>Customer Satisfaction Priority</span>
-              <Sparkles className="w-4 h-4 text-amber-300" />
+              <Award className="w-4 h-4 text-amber-300" />
             </div>
           </div>
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Search, MapPin, Calendar, Users, Star, Award, ShieldCheck, Sparkles, ArrowRight } from 'lucide-react';
+import { Search, MapPin, Calendar, Users, Star, Award, ShieldCheck, ArrowRight } from 'lucide-react';
 import { Destination, PageView } from '../../types';
 
 interface HeroSectionProps {
@@ -48,7 +48,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         
         {/* Luxury Badge */}
         <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-amber-300 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase mb-6 w-fit shadow-xl">
-          <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+          <Award className="w-3.5 h-3.5 text-amber-400" />
           <span>Curated Bespoke Expeditions & Luxury Pakistan Travel Architecture</span>
         </div>
 

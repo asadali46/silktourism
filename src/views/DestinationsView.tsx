@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Destination, PageView, TourPackage } from '../types';
-import { Search, MapPin, Star, Filter, ArrowRight, Sparkles, X, Check } from 'lucide-react';
+import { Search, MapPin, Star, Filter, ArrowRight, X, Check } from 'lucide-react';
 
 interface DestinationsViewProps {
   destinations: Destination[];

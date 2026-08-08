@@ -9,7 +9,6 @@ import {
   XCircle, 
   Calendar, 
   ShieldCheck, 
-  Sparkles, 
   ChevronDown, 
   Heart, 
   Share2,
@@ -376,7 +375,7 @@ export const TourDetailView: React.FC<TourDetailViewProps> = ({
                 onClick={() => onOpenBooking(tour)}
                 className="w-full py-4 bg-[#0F766E] hover:bg-[#0d645e] text-white rounded-2xl font-bold text-xs uppercase tracking-wider shadow-lg shadow-teal-900/10 transition-all flex items-center justify-center gap-2"
               >
-                <Sparkles className="w-4 h-4 text-amber-300" />
+                <CheckCircle2 className="w-4 h-4 text-amber-300" />
                 <span>Reserve VIP Expedition</span>
               </button>
 

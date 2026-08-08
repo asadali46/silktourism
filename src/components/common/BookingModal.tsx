@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Calendar, Users, Shield, CheckCircle, Sparkles, CreditCard, ChevronRight } from 'lucide-react';
+import { X, Calendar, Users, Shield, CheckCircle, CreditCard, ChevronRight } from 'lucide-react';
 import { TourPackage } from '../../types';
 
 interface BookingModalProps {

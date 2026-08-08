@@ -12,7 +12,7 @@ import {
   Menu, 
   X, 
   ChevronDown, 
-  Sparkles,
+  Award,
   LayoutDashboard,
   ShieldCheck,
   LogOut,
@@ -96,7 +96,7 @@ export const Header: React.FC<HeaderProps> = ({
 
           {/* Center Announcement */}
           <div className="flex items-center gap-2 text-white font-bold tracking-wide uppercase text-[10px] sm:text-[11px]">
-            <Sparkles className="w-3.5 h-3.5 text-amber-300 animate-pulse" />
+            <Award className="w-3.5 h-3.5 text-amber-300" />
             <span>20% OFF NORTHERN LUXURY EXPEDITIONS — CODE: <strong className="text-amber-300">SILKPAK20</strong></span>
           </div>
 
